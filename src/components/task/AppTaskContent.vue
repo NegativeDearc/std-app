@@ -37,7 +37,7 @@
                 return-object
                 v-model="taskRepeatInterval"
                 :disabled="taskIsDone"
-                v-on:input="slowOnChangeUpdate('isLoop', $event)"
+                v-on:input="slowOnChangeUpdate('frequency', $event)"
               >
                 <template
                   slot="item"
@@ -224,8 +224,8 @@ export default {
         case 'taskDescription':
           _updateValue = { taskDescription: event }
           break
-        case 'isLoop':
-          _updateValue = { isLoop: event.itemId }
+        case 'frequency':
+          _updateValue = { frequency: event.itemId }
           break
         case 'remindAt':
           _updateValue = { remindAt: event }
@@ -236,6 +236,7 @@ export default {
         case 'taskTags':
           _updateValue = { taskTags: event ? event.toString() : null }
       }
+      console.log('=> CHANGING', key, 'TO', _updateValue)
       // todo: use debound from lodash to reduce api pressure
       this.$store.dispatch('UPDATE_ONE_TASK', [_id, _updateValue])
       this.snackbar = true
@@ -249,7 +250,7 @@ export default {
         this.taskName = _data.taskTitle
         this.taskDescription = _data.taskDescription
         this.taskTags = _data.taskTags ? _data.taskTags.split(',') : null
-        this.taskRepeatInterval = _data.isLoop
+        this.taskRepeatInterval = _data.frequency
         this.taskTimeSlot = _data.remindAt
         this.taskDueDate = this.$moment(_data.dueDate).format('DD/MM/YYYY')
       })

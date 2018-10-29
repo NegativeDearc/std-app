@@ -41,12 +41,13 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     // this route requires auth, check if logged in
     // if not, redirect to login page.
-    if (!localStorage.getItem('userId')) {
+    if (!window.localStorage.getItem('userId')) {
       next({
         path: '/login',
         query: { redirect: to.fullPath }// 把要跳转的地址作为参数传到下一步
       })
     } else {
+      console.log('=> ALREADY LOGGED IN, DIRECT TO', to.fullPath)
       next()
     }
   } else {

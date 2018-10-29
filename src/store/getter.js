@@ -13,10 +13,7 @@ const getters = {
   GET_USER_ID: function () {
     return window.localStorage.getItem('userId')
   },
-    /**
-     * @return {null}
-     */
-    GET_TASK_ALL: function (state) {
+  GET_TASK_ALL: function (state) {
     return state.TASKS
   },
   GET_TASK_BY_ID: (state) => (id) => {
