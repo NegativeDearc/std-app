@@ -78,10 +78,11 @@
           <v-divider
             class="mx-3"
           ></v-divider>
-          <v-subheader>你的下属</v-subheader>
+          <v-subheader>你的团队</v-subheader>
           <v-container>
             <v-layout>
-              <v-flex></v-flex>
+              <v-flex>
+              </v-flex>
             </v-layout>
           </v-container>
         </v-card-text>

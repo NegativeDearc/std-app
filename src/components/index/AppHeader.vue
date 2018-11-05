@@ -2,7 +2,7 @@
   <v-toolbar
     app
   >
-    <v-toolbar-side-icon v-on:click.stop="$store.commit('UNDRAWER') "></v-toolbar-side-icon>
+    <v-toolbar-side-icon v-on:click.stop="$store.commit('UNDRAWER')"></v-toolbar-side-icon>
     <v-autocomplete
       :loading="loading"
       :items="items"
@@ -17,6 +17,7 @@
       clearable
     ></v-autocomplete>
     <v-toolbar-items>
+      <AppContentTaskDetail></AppContentTaskDetail>
       <AppHeaderDash/>
       <AppHeaderSettings/>
     </v-toolbar-items>
@@ -26,6 +27,7 @@
 <script>
 import AppHeaderDash from '../index/AppHeaderDash'
 import AppHeaderSettings from '../index/AppHeaderSettings'
+import AppContentTaskDetail from '../index/AppContentTaskDetail'
 
 export default {
   name: 'AppHeader',
@@ -38,6 +40,7 @@ export default {
     }
   },
   components: {
+    AppContentTaskDetail,
     AppHeaderDash,
     AppHeaderSettings
   },
