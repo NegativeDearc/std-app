@@ -82,6 +82,7 @@
           <v-container>
             <v-layout>
               <v-flex>
+                <UserPunchCard/>
               </v-flex>
             </v-layout>
           </v-container>
@@ -99,8 +100,11 @@
 </template>
 
 <script>
+import UserPunchCard from '../utils/UserPunchCard'
+
 export default {
   name: 'AppHeaderDash',
+  components: { UserPunchCard },
   data () {
     return {
       dialog: false,
