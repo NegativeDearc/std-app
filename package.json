@@ -1,6 +1,7 @@
 {
   "name": "std-app",
-  "version": "0.2.20",
+  "version": "0.2.24",
+  "author": "CHENXEI",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -12,6 +13,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.0.0",
+    "@mdi/font": "^3.0.39",
     "axios": "^0.18.0",
     "bluebird": "^3.5.2",
     "material-design-icons-iconfont": "^3.0.3",
