@@ -4,8 +4,14 @@ import AppContentToday from '../components/index/AppContentToday'
 import AppContentFuture from '../components/index/AppContentFuture'
 import AppContentArchive from '../components/index/AppContentArchive'
 import AppIndex from '../components/index/AppIndex'
+import AppFooter from '../components/index/AppFooter'
 import AppTask from '../components/task/AppTask'
 import AppLogin from '../components/index/AppLogin'
+import ResetPassword from '../components/utils/ResetPassword'
+import NProgress from 'nprogress'
+
+NProgress.inc(0.2)
+NProgress.configure({ easing: 'ease', speed: 500, showSpinner: false })
 
 Vue.use(Router)
 
@@ -15,10 +21,11 @@ const router = new Router({
       path: '/',
       component: AppIndex,
       children: [
-        { path: '', component: AppContentToday, meta: { requiresAuth: true } },
+        { path: '', components: { default: AppContentToday, footer: AppFooter }, meta: { requiresAuth: true } },
         { path: 'today', component: AppContentToday, meta: { requiresAuth: true } },
         { path: 'future', component: AppContentFuture, meta: { requiresAuth: true } },
-        { path: 'archive', component: AppContentArchive, meta: { requiresAuth: true } }
+        { path: 'archive', component: AppContentArchive, meta: { requiresAuth: true } },
+        { path: 'password', component: ResetPassword, meta: { requiresAuth: true } }
       ],
       meta: {
         requiresAuth: true
@@ -53,11 +60,16 @@ router.beforeEach((to, from, next) => {
       })
     } else {
       console.log('=> ALREADY LOGGED IN, DIRECT TO', to.fullPath)
+      NProgress.start()
       next()
     }
   } else {
     next() // 确保一定要调用 next()
   }
+})
+
+router.afterEach(() => {
+  NProgress.done()
 })
 
 export default router
