@@ -19,7 +19,7 @@ const actions = {
 
   UPDATE_ONE_TASK: function (context, [id, updateValue]) {
     console.log(id, updateValue)
-    axios.post('/task/' + id, new URLSearchParams(updateValue))
+    axios.post('/task/' + id, updateValue)
       .then(() => {
         console.log('=> UPDATE DATA TO..', updateValue)
       }).catch(err => {
@@ -99,6 +99,14 @@ const actions = {
         console.log('==> GETTING EMPLOYEE DASH STATUS')
         context.commit('SET_EMPLOYEE_DASH', data.data)
         console.log(data.data)
+      })
+  },
+
+  GET_CRON_EXPRESSION_DESCRIPTION: function (context, form) {
+    axios.post('/cron/expression', form)
+      .then(data => {
+        console.log('==> GETTING CRON DESCRIPTION', data.data)
+        context.commit('SET_CRON_DESCRIPTION', data.data.description)
       })
   }
 }
