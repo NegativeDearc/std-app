@@ -1,7 +1,6 @@
 'use strict'
 
-import path from 'path'
-import {app, protocol, Tray, BrowserWindow, Menu} from 'electron'
+import {app, protocol, BrowserWindow} from 'electron'
 import {
     createProtocol,
     // installVueDevtools
@@ -12,8 +11,6 @@ const isDevelopment = process.env.NODE_ENV !== 'production'
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win
-let appTray
-let trayClose
 
 // Standard scheme must be registered before the app is ready
 protocol.registerStandardSchemes(['app'], {secure: true})
@@ -32,39 +29,9 @@ function createWindow() {
         win.loadFile('index.html')
     }
 
-    win.on('close', () => {
-        if (process.platform === 'win') {
-            win.hide()
-            const iconPath = path.join(__dirname, '/public/favicon.ico')
-            appTray = new Tray(iconPath)
-            // 图标的上上下文
-            const contextMenu = Menu.buildFromTemplate(trayMenuTemplate)
-            // 设置此托盘图标的悬停提示内容
-            appTray.setToolTip('天天好心情')
-            // 设置此图标的上下文菜单
-            appTray.setContextMenu(contextMenu)
-            // 主窗口显示隐藏切换
-            appTray.on('click', () => {
-                win.isVisible() ? win.hide() : win.show()
-            })
-            event.preventDefault()
-        }
-    })
-
     win.on('closed', () => {
         win = null
     })
-
-    const trayMenuTemplate = [
-        {
-            label: '退出',
-            click: function () {
-                // 退出
-                trayClose = true
-                app.quit()
-            }
-        }
-    ]
 }
 
 // Quit when all windows are closed.
