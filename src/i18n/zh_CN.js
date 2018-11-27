@@ -1,6 +1,7 @@
 module.exports = {
   message: {
     punchCard: '任务卡',
+    personalTask: '个人任务',
     today: '今日摘要',
     further: '晚些时候',
     back: '返回',
@@ -51,6 +52,10 @@ module.exports = {
     expired_at: '过期于:',
     notify: '通知',
     generating_new_task: '正在生成新的任务',
-    every: '每隔'
+    every: '每隔',
+    mu_1: '制造单元1',
+    mu_2: '制造单元2',
+    central: '中央部门',
+    pass_seven_days_finish_rate: '近七天的完成率'
   }
 }
