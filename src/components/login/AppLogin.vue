@@ -3,7 +3,7 @@
     <v-container>
       <v-layout align-center justify-end column fill-height>
         <div class="display-3 grey--text">
-          SCN to-do
+          <span class="green--text">STD</span>
         </div>
         <v-flex xs8 md8 sm8>
           <v-card flat color="transparent" width="400px">
@@ -37,7 +37,7 @@
     <v-footer class="pa-3" app>
       <div class="body-2">CHENXEI@SCN MOVE</div>
       <v-spacer></v-spacer>
-      <div class="body-2">&copy; {{ new Date().getFullYear() }} STD Version V0.4.49</div>
+      <div class="body-2">&copy; 2018 - {{ new Date().getFullYear() }} STD Version V0.4.50</div>
     </v-footer>
   </v-app>
 

@@ -1,7 +1,7 @@
 <template>
   <v-layout>
     <v-btn flat icon color="purple red--after" v-on:click.stop="getUserDash">
-      <v-icon>insert_chart</v-icon>
+      <v-icon>mdi-account-multiple</v-icon>
     </v-btn>
 
     <v-dialog
@@ -10,6 +10,7 @@
       hide-overlay
       transition="dialog-bottom-transition"
       scrollable
+      v-bind:dark="$store.state.IS_DARK"
     >
       <v-card>
         <v-toolbar dark color="purple red--after">
@@ -86,7 +87,7 @@
                       <v-icon color="green" v-else-if="item.isDone === true && item.isDelay === false">mdi-check-circle-outline</v-icon>
                       <v-icon color="yellow" v-else>mdi-eye-outline</v-icon>
                     </v-btn>
-                    <v-card width="420px">
+                    <v-card>
                       <v-list two-line>
                         <v-list-tile>
                           <v-list-tile-content>

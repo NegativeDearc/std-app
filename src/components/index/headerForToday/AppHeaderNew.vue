@@ -1,6 +1,6 @@
 <template>
   <v-layout row justify-center>
-    <v-btn flat icon dark color="red" v-on:click.stop="taskDialog = true">
+    <v-btn flat icon dark color="green" v-on:click.stop="taskDialog = true">
       <v-icon>add</v-icon>
     </v-btn>
     <v-dialog
@@ -9,6 +9,7 @@
         hide-overlay
         transition="dialog-bottom-transition"
         scrollable
+        v-bind:dark="$store.state.IS_DARK"
     >
         <v-card tile>
           <v-toolbar dark color="green">
