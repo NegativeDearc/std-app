@@ -6,6 +6,19 @@
     temporary
   >
     <v-list>
+      <v-card flat>
+        <v-layout align-center justify-end column fill-height>
+          <div class="display-2 grey--text">
+            <span class="green--text">STD</span>
+          </div>
+          <div class="body-2 grey--text">
+            build with <v-icon color="red" size="14">mdi-heart</v-icon>
+            made by <span><v-icon size="14" color="yellow">mdi-language-javascript</v-icon></span> + <span><v-icon size="14" color="blue">mdi-language-python</v-icon></span>
+          </div>
+          <v-card-actions>
+          </v-card-actions>
+        </v-layout>
+      </v-card>
       <v-list-tile to="/">
         <v-list-tile-action>
           <v-icon>home</v-icon>
@@ -42,7 +55,7 @@
         value="true"
       >
         <v-list-tile slot="activator">
-          <v-list-tile-title>{{ $t('lab') }}</v-list-tile-title>
+          <v-list-tile-title>{{ $t('lab') }}<sup><span class="red--text">beta</span></sup></v-list-tile-title>
         </v-list-tile>
 
         <v-list>
@@ -61,7 +74,6 @@
           </v-list-tile>
         </v-list>
       </v-list-group>
-
     </v-list>
   </v-navigation-drawer>
 </template>
@@ -75,8 +87,7 @@ export default {
       { name: '工厂仪表盘', icon: 'dashboard', link: '/dashboard' }
     ],
     labs: [
-      { name: '日历', icon: '', link: '/lab/picker' },
-      { name: '仪表盘', icon: '', link: '/lab/dash' }
+      { name: '日历', icon: '', link: '/lab/picker' }
     ]
   })
 }
