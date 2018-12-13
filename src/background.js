@@ -1,6 +1,7 @@
 'use strict'
 
-import {app, protocol, BrowserWindow} from 'electron'
+const path = require('path');
+import {app, protocol, BrowserWindow, Tray, Menu, nativeImage} from 'electron'
 import {
     createProtocol,
     // installVueDevtools
@@ -10,14 +11,15 @@ const isDevelopment = process.env.NODE_ENV !== 'production'
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let win
+let win;
+let appTray = null;
 
 // Standard scheme must be registered before the app is ready
 protocol.registerStandardSchemes(['app'], {secure: true})
 
 function createWindow() {
     // Create the browser window.
-    win = new BrowserWindow({width: 1280, height: 800})
+    win = new BrowserWindow({width: 960, height: 640})
 
     if (isDevelopment) {
         // Load the url of the dev server if in development mode
@@ -28,6 +30,53 @@ function createWindow() {
         // Load the index.html when not in development
         win.loadFile('index.html')
     }
+
+    //系统托盘右键菜单
+    const trayMenuTemplate = [
+        {
+            label: 'Quit',
+            click: function () {
+                app.quit()
+            }
+        }
+    ];
+
+    const trayIcon = path.join(__static, 'icons/app.png')
+    appTray = new Tray(nativeImage.createFromPath(trayIcon));
+    //图标的上下文菜单
+    const contextMenu = Menu.buildFromTemplate(trayMenuTemplate);
+
+    //设置此托盘图标的悬停提示内容
+    appTray.setToolTip('A To Do App Made By MOVE');
+
+    //设置此图标的上下文菜单
+    appTray.setContextMenu(contextMenu);
+    //单击右下角小图标显示应用
+    appTray.on('click',function(){
+        win.isVisible() ? win.hide() : win.show()
+    })
+
+    win.on('show', () => {
+        win.setSkipTaskbar(true)
+        if(process.platform === "darwin") {
+            appTray.setHighlightMode('never')
+        }
+    })
+    win.on('hide', () => {
+        win.setSkipTaskbar(false)
+        if(process.platform === "darwin") {
+            appTray.setHighlightMode('selection')
+        }
+    })
+
+    win.on('close', (e) => {
+        if(win.isMinimized()){
+            win = null;
+        }else{
+            e.preventDefault();
+            win.minimize();
+        }
+    });
 
     win.on('closed', () => {
         win = null
