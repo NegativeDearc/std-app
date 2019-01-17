@@ -1,35 +1,17 @@
 <template>
-  <v-app app v-bind:dark="$store.state.IS_DARK">
-    <v-toolbar
-      color="green"
-      dark
-      tabs
-      app
-    >
-      <v-btn icon v-on:click="goBack">
-        <v-icon>chevron_left</v-icon>
-      </v-btn>
-      <v-toolbar-title>{{ $t('plant_dashboard') }}</v-toolbar-title>
-
-      <v-spacer></v-spacer>
-
-      <v-btn icon v-on:click="refresh">
-        <v-icon>refresh</v-icon>
-      </v-btn>
+  <v-content app>
+    <v-card height="100%" flat>
       <v-tabs
+        color="transparent"
         fixed-tabs
-        slot="extension"
         v-model="model"
         centered
-        color="green"
         slider-color="yellow"
       >
         <v-tab v-bind:href="`#tab-1`">{{ $t('mu_1') }}</v-tab>
         <v-tab v-bind:href="`#tab-2`">{{ $t('mu_2') }}</v-tab>
         <v-tab v-bind:href="`#tab-3`">{{ $t('central') }}</v-tab>
       </v-tabs>
-    </v-toolbar>
-    <v-content app>
       <v-tabs-items v-model="model">
         <v-tab-item v-bind:value="`tab-1`">
           <v-card flat height="100%">
@@ -67,11 +49,9 @@
           </v-card>
         </v-tab-item>
       </v-tabs-items>
-
       <dash-list v-bind:segment="this.segment" v-bind:task_detail="segment_detail"></dash-list>
-    </v-content>
-    <v-footer app></v-footer>
-  </v-app>
+    </v-card>
+  </v-content>
 </template>
 
 <script>
@@ -79,7 +59,7 @@ import dashCard from './dashCard'
 import dashList from './dashList'
 
 export default {
-  name: 'dashboardIndex',
+  name: 'V2Dashboard',
   data () {
     return {
       model: 'tab-1',

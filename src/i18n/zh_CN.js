@@ -1,7 +1,7 @@
 module.exports = {
   message: {
-    punchCard: '任务卡',
-    personalTask: '个人任务',
+    punchCard: '习惯',
+    personalTask: '日历',
     today: '今日摘要',
     further: '晚些时候',
     back: '返回',
@@ -59,6 +59,11 @@ module.exports = {
     pass_seven_days_finish_rate: '近七天的完成率',
     no_event: '无事件',
     holiday_model: '假期模式',
-    holiday_modal_description: '逃跑吧，懦夫！'
+    holiday_modal_description: '休假期间不会生成任务',
+    delete: '删除',
+    this_week: '本周',
+    expired_task: '过期',
+    finished: '完成',
+    favorite: '收藏'
   }
 }

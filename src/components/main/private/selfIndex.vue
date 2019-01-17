@@ -1,22 +1,20 @@
 <template>
-  <v-app app>
-    <self-toolbar></self-toolbar>
+  <div>
     <v-content app>
       <self-calendar></self-calendar>
       <self-task-items v-bind:date="date"></self-task-items>
     </v-content>
-  </v-app>
+  </div>
 </template>
 
 <script>
 import { eventBus } from '../../../main'
-import selfToolbar from './selfToolbar'
 import SelfCalendar from './selfCalendar'
 import SelfTaskItems from './selfTaskItems'
 
 export default {
-  name: 'selfIndex',
-  components: { SelfTaskItems, SelfCalendar, selfToolbar },
+  name: 'VSelfIndex',
+  components: { SelfTaskItems, SelfCalendar },
   data () {
     return {
       date: null

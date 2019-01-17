@@ -4,6 +4,14 @@ const mutations = {
     state.IF_DRAWER = !state.IF_DRAWER
   },
 
+  UNDRAWER_LEFT: function (state) {
+    state.LEFT_DRAWER = !state.LEFT_DRAWER
+  },
+
+  DRAWER_RIGHT: function (state) {
+    state.RIGHT_DRAWER = !state.RIGHT_DRAWER
+  },
+
   SET_DARK_MODEL: function (state) {
     state.IS_DARK = !state.IS_DARK
     localStorage.setItem('darkModel', state.IS_DARK)
@@ -59,6 +67,36 @@ const mutations = {
   CHANGE_DEFAULT_LANG: function (state, locale) {
     state.DEFAULT_LANG = locale
     localStorage.setItem('LOCALE', locale)
+  },
+  GET_SEPECIFIC_TASK_ID: function (state, id) {
+    state.SPECIFIC_TASK_ID = id
+  },
+  CHANGE_TASK: function (state, task) {
+    state.TASK = task
+  },
+  /* rrule */
+  CHANGE_RRULE_STRINGS: function (state, string) {
+    state.RRULE_STRING.LOOP = string
+  },
+  ADD_RRULE_END: function (state, data) {
+    switch (data.type) {
+      case 'count':
+        state.RRULE_STRING.END = { COUNT: data.value }
+        break
+      case 'until':
+        state.RRULE_STRING.END = { UNTIL: data.value }
+        break
+    }
+  },
+  REMOVE_RRULE_END: function (state) {
+    state.RRULE_STRING.END = {}
+  },
+  /* CRON V2 */
+  CHANGE_CRON_DICT: function (state, dict) {
+    for (let key in dict) {
+      state.CRON_EXPRESSION[key] = dict[key]
+    }
+    console.log(state.CRON_EXPRESSION)
   }
 }
 

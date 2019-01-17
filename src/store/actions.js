@@ -27,18 +27,33 @@ const actions = {
       })
   },
 
+  UPDATE_ONE_TASK_ASYNC: function (context, [id, updateValue]) {
+    return new Promise((resolve) => {
+      resolve(
+        axios.post('/task/' + id, updateValue)
+          .then(() => {
+            console.log('=> UPDATE DATA TO..', updateValue)
+          }).catch(err => {
+            console.log(('=> ENCOUNTER ERR WHEN TRYING UPDATE TO ', err))
+          })
+      )
+    })
+  },
+
+  async UPDATE_AFTER_UPDATE (context, [id, updateValue]) {
+    /*
+     combine two asynchronous actions together MUST use async/await to control sequence
+     first delete task then update data in stores
+      */
+    await context.dispatch('UPDATE_ONE_TASK_ASYNC', [id, updateValue])
+    context.dispatch('GET_TASKS_OF_ALL')
+  },
+
   /**
    * @return {boolean}
    */
   CHANGE_DONE_STATUS: function (context, id) {
     let updatedTask = context.getters.GET_TASK_BY_ID(id)
-    // if (updatedTask.isDone) {
-    //   let _confirm = confirm('您已经将这条任务标记为已完成，是否确定要取消完成状态')
-    //   if (!_confirm) {
-    //     context.dispatch('GET_TASKS_OF_ALL')
-    //     return false
-    //   }
-    // }
     let _form = new URLSearchParams({ isDone: !updatedTask.isDone })
     axios.put('/task/' + id, _form)
       .then(data => {
