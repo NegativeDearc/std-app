@@ -22,8 +22,10 @@
         placeholder="Type anything to do..."
         v-on:keyup.enter="newTask"
         v-on:keyup.esc="emptyTask"
+        v-if="this.$route.name in {favorite: '', thisWeek: '', expired: '', later: '', finished: ''}"
       >
       </v-text-field>
+      <v-spacer v-else></v-spacer>
       <v-menu v-bind:nudge-width="100">
         <v-btn icon slot="activator">
           <v-icon>more_vert</v-icon>
@@ -59,7 +61,6 @@ export default {
   },
   methods: {
     newTask: function () {
-      console.log(this.taskTitle)
       this.$store.dispatch('CREATE_NEW_TASK', { taskTitle: this.taskTitle })
         .then(() => Object.assign(this.$data, this.$options.data()))
     },

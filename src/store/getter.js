@@ -22,6 +22,7 @@ const getters = {
   },
 
   GET_TASK_BY_ID: (state) => (id) => {
+    console.log('=> GETTING TASK id=', id)
     return state.TASKS.find(task => task.id === id)
   },
 
@@ -135,6 +136,19 @@ const getters = {
     (getters.GET_TASKS_FINISHED.length === 0)
       ? count = null
       : count = getters.GET_TASKS_FINISHED.length
+    return count
+  },
+  GET_TASKS_FAVORITE: function (state) {
+    return state.TASKS.filter(todo => todo.isFavorite === true).reverse()
+  },
+  /**
+   * @return {number}
+   */
+  GET_TASKS_FAVORITE_COUNT: function (state, getters) {
+    let count
+    (getters.GET_TASKS_FAVORITE.length === 0)
+      ? count = null
+      : count = getters.GET_TASKS_FAVORITE.length
     return count
   },
   /**
