@@ -1,26 +1,24 @@
 # std-app
+It's a to-do app inspired by many apps like *Microsoft To Do* aim to help to arrange recurrence works but also available for one-time tasks.
 
+It's developed by `vue.js` & `vuetify` framework and pack by `electron` which require **vue-cli3** & **electron-vuetify** boilerplate.
+## Gallery
+![screenshot](Capture.png)
 ## Project setup
+install necessary packages
 ```
-npm install
+yarn install
 ```
+run in test mode
+```
+yarn electron:serve
+```
+build for production
+```
+yarn electron:build
+```
+## Notice
+It's not a standalone app which required a backend, you can edit
+from repository [std-api](https://www.github.com/NegativeDearc/std-api) which writen by Python.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
+Web version can be found at [std](https://www.github.com/NegativeDearc/std).
