@@ -3,7 +3,7 @@ It's a to-do app inspired by many apps like *Microsoft To Do* aim to help to arr
 
 It's developed by `vue.js` & `vuetify` framework and pack by `electron` which require **vue-cli3** & **electron-vuetify** boilerplate.
 ## Gallery
-![screenshot](Capture.png)
+![screenshot](Capture.PNG)
 ## Project setup
 install necessary packages
 ```
