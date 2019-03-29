@@ -82,7 +82,16 @@ function createWindow() {
         win = null
     })
 }
-
+// Quit when not single-instance
+const shouldQuit = app.makeSingleInstance((commandLine, workingDirectory) => {
+    if (win) {
+        if (win.isMinimized()) win.restore()
+        win.focus()
+    }
+})
+if (shouldQuit) {
+    app.quit()
+}
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
     // On macOS it is common for applications and their menu bar
