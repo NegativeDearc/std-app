@@ -85,8 +85,8 @@ function createWindow() {
 // Quit when not single-instance
 const shouldQuit = app.makeSingleInstance((commandLine, workingDirectory) => {
     if (win) {
-        if (win.isMinimized()) win.restore()
-        win.focus()
+        win.isVisible() ? win.restore() : win.show()
+        win.isMinimized() ? win.restore() : win.focus()
     }
 })
 if (shouldQuit) {
