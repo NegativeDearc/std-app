@@ -11329,10 +11329,10 @@ vue@^2.5.17:
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.22.tgz#3bf88041af08b8539c37b268b70ca79245e9cc30"
   integrity sha512-pxY3ZHlXNJMFQbkjEgGVMaMMkSV1ONpz+4qB55kZuJzyJOhn6MSy/YZdzhdnumegNzVTL/Dn3Pp4UrVBYt1j/g==
 
-vuetify@^1.5.8:
-  version "1.5.8"
-  resolved "http://registry.npm.taobao.org/vuetify/download/vuetify-1.5.8.tgz#58bbbe07a05e1cb00fffa9abed3f2f1d8e6ca29d"
-  integrity sha1-WLu+B6BeHLAP/6mr7T8vHY5sop0=
+vuetify@^1.5.9:
+  version "1.5.9"
+  resolved "http://registry.npm.taobao.org/vuetify/download/vuetify-1.5.9.tgz#58db8af20cc2a4d226125e430ca5217d8056555b"
+  integrity sha1-WNuK8gzCpNImEl5DDKUhfYBWVVs=
 
 vuex@^3.0.1:
   version "3.0.1"
