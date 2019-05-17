@@ -3,6 +3,7 @@
   "version": "0.5.64",
   "private": true,
   "author": "CHENXEI",
+  "repository": "https://github.com/NegativeDearc/std-app",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -24,6 +25,7 @@
     "localforage": "^1.7.3",
     "material-design-icons-iconfont": "^3.0.3",
     "nprogress": "^0.2.0",
+    "update-electron-app": "^1.3.0",
     "uuid": "^3.3.2",
     "vee-validate": "^2.1.3",
     "vue": "^2.5.17",
