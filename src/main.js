@@ -19,7 +19,13 @@ import NProgress from 'nprogress'
 import localForge from 'localforage'
 import VueSocketIO from 'vue-socket.io'
 
-axios.defaults.baseURL = 'http://localhost:7659/api/'
+const isDev = process.env.NODE_ENV !== 'production'
+
+if (isDev) {
+  axios.defaults.baseURL = 'http://localhost:7659/api/'
+} else {
+  axios.defaults.baseURL = 'http://p01142572:7659/api/'
+}
 
 Vue.config.productionTip = false
 Vue.use(Vuetify)
