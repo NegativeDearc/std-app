@@ -1,7 +1,6 @@
 'use strict'
 
 const path = require('path');
-require('update-electron-app')()
 import {app, protocol, BrowserWindow, Tray, Menu, nativeImage} from 'electron'
 import {
     createProtocol,
