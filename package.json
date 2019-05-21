@@ -1,6 +1,6 @@
 {
   "name": "std-app",
-  "version": "0.5.64",
+  "version": "0.6.0",
   "private": true,
   "author": "CHENXEI",
   "repository": "https://github.com/NegativeDearc/std-app",
@@ -20,7 +20,7 @@
     "axios": "^0.18.0",
     "better-scroll": "^1.13.2",
     "bluebird": "^3.5.2",
-    "cronstrue": "^1.58.0",
+    "cronstrue": "^1.68.0",
     "flag-icon-css": "^3.2.1",
     "localforage": "^1.7.3",
     "material-design-icons-iconfont": "^3.0.3",
